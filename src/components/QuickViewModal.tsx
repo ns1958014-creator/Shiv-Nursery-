@@ -15,7 +15,20 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   onAddToInquiry,
   isInBag,
 }) => {
+  const [activeImage, setActiveImage] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (plant) {
+      setActiveImage(plant.imageUrl);
+    }
+  }, [plant]);
+
   if (!plant) return null;
+
+  const currentImg = activeImage || plant.imageUrl;
+  const allImages = plant.additionalImages
+    ? [plant.imageUrl, ...plant.additionalImages]
+    : [plant.imageUrl];
 
   const whatsappMessage = encodeURIComponent(
     `Hello Shiv Nursery, I would like to inquire about buying: ${plant.name} (₹${plant.price}).`
@@ -35,22 +48,48 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2">
           
-          {/* Plant Image */}
-          <div className="relative h-64 md:h-full min-h-[280px] bg-emerald-950/20">
-            <img
-              src={plant.imageUrl}
-              alt={plant.name}
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent" />
-            <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-emerald-900/90 text-emerald-100 text-xs font-bold border border-emerald-700">
-              {plant.category}
-            </span>
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <p className="text-xs italic text-emerald-300 font-mono">{plant.botanicalName}</p>
-              <h3 className="text-xl font-bold font-serif">{plant.name}</h3>
+          {/* Plant Image & Gallery Thumbnails */}
+          <div className="relative h-72 md:h-full min-h-[300px] bg-emerald-950/20 flex flex-col justify-between">
+            <div className="relative w-full h-full min-h-[240px] flex-1 overflow-hidden">
+              <img
+                src={currentImg}
+                alt={plant.name}
+                className="w-full h-full object-cover transition-all duration-300"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent pointer-events-none" />
+              <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-emerald-900/90 text-emerald-100 text-xs font-bold border border-emerald-700">
+                {plant.category}
+              </span>
+              <div className="absolute bottom-3 left-4 right-4 text-white">
+                <p className="text-xs italic text-emerald-300 font-mono">{plant.botanicalName}</p>
+                <h3 className="text-xl font-bold font-serif">{plant.name}</h3>
+              </div>
             </div>
+
+            {/* Thumbnail Row if additional images exist */}
+            {allImages.length > 1 && (
+              <div className="p-3 bg-emerald-950/90 border-t border-emerald-800 flex items-center gap-2 overflow-x-auto">
+                {allImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveImage(img)}
+                    className={`w-12 h-12 rounded-lg overflow-hidden border-2 shrink-0 transition-all ${
+                      currentImg === img
+                        ? 'border-emerald-400 scale-105 shadow-md ring-2 ring-emerald-400/50'
+                        : 'border-emerald-800/60 opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${plant.name} view ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Details & Care Instructions */}

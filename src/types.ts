@@ -18,6 +18,7 @@ export interface Plant {
   originalPrice?: number;
   inStock: boolean;
   imageUrl: string;
+  additionalImages?: string[];
   sunlight: 'Full Sun' | 'Partial Sun' | 'Indirect Bright' | 'Low Light';
   waterNeeded: 'Low' | 'Moderate' | 'Frequent';
   growthRate: 'Slow' | 'Moderate' | 'Fast';

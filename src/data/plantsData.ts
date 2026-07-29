@@ -2,6 +2,12 @@ import { Category, GalleryItem, Plant, Review, WhyChooseItem } from '../types';
 import heroBannerImg from '../assets/images/hero_nursery_lush_1785149962697.jpg';
 import nurseryOverviewImg from '../assets/images/nursery_overview_1785149975665.jpg';
 
+import mangoSaplingPolybagImg from '../assets/images/mango_sapling_polybag_1785311348187.jpg';
+import mangoNurseryFloweringImg from '../assets/images/mango_nursery_flowering_1785311364177.jpg';
+import mangoBlossomCloseUpImg from '../assets/images/mango_blossom_close_up_1785311379498.jpg';
+import mangoYoungFruitsImg from '../assets/images/mango_young_fruits_1785311393664.jpg';
+import graftedMangoSaplingsFloweringImg from '../assets/images/grafted_mango_saplings_flowering_1785311412529.jpg';
+
 export const HERO_IMAGE = heroBannerImg;
 export const NURSERY_OVERVIEW_IMAGE = nurseryOverviewImg;
 
@@ -10,7 +16,7 @@ export const CATEGORIES: Category[] = [
     id: 'fruit-plants',
     title: 'Fruit Plants',
     description: 'High-yield grafted fruit saplings suited for home gardens and commercial orchards.',
-    imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=800',
+    imageUrl: mangoSaplingPolybagImg,
     count: 24,
     badge: 'High Yield',
   },
@@ -75,14 +81,20 @@ export const CATEGORIES: Category[] = [
 export const FEATURED_PLANTS: Plant[] = [
   {
     id: 'mango-plant',
-    name: 'Grafted Mango Plant (Dasheri/Amrapali)',
-    botanicalName: 'Mangifera indica',
+    name: 'Grafted Mango Sapling in Polybag',
+    botanicalName: 'Mangifera indica (Dasheri / Amrapali)',
     category: 'Fruit Plants',
-    description: 'Premium grafted mango sapling yielding sweet, aromatic mangoes within 2-3 years. Ideal for home gardens and orchard farming.',
+    description: 'Nursery-grown grafted mango sapling in black polybag bag. Features strong root formation, healthy green foliage, and fast acclimation for gardens and orchards.',
     price: 350,
     originalPrice: 450,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=800',
+    imageUrl: mangoSaplingPolybagImg,
+    additionalImages: [
+      graftedMangoSaplingsFloweringImg,
+      mangoNurseryFloweringImg,
+      mangoBlossomCloseUpImg,
+      mangoYoungFruitsImg,
+    ],
     sunlight: 'Full Sun',
     waterNeeded: 'Moderate',
     growthRate: 'Fast',
@@ -90,12 +102,69 @@ export const FEATURED_PLANTS: Plant[] = [
     featured: true,
     isPopular: true,
     careTips: [
-      'Plant in well-draining organic soil',
-      'Requires 6+ hours of daily sunlight',
-      'Water deep once weekly during non-monsoon',
-      'Apply vermicompost twice a year'
+      'Transplant from polybag into rich well-draining soil',
+      'Requires 6+ hours of direct sunlight',
+      'Water deeply once weekly during non-monsoon',
+      'Apply vermicompost and neem cake organic fertilizer'
     ],
     bestFor: 'Home Orchards, Gardens & Farms',
+  },
+  {
+    id: 'flowering-mango-sapling',
+    name: 'Flowering Grafted Mango Sapling',
+    botanicalName: 'Mangifera indica (All-Season Variety)',
+    category: 'Fruit Plants',
+    description: 'All-season flowering mango sapling in black nursery bag with early flower spikes already developing. Quick to produce sweet aromatic fruit.',
+    price: 420,
+    originalPrice: 520,
+    inStock: true,
+    imageUrl: graftedMangoSaplingsFloweringImg,
+    additionalImages: [
+      mangoBlossomCloseUpImg,
+      mangoYoungFruitsImg,
+      mangoNurseryFloweringImg,
+      mangoSaplingPolybagImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '2.5 - 3.5 Feet',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Avoid heavy pruning during active flowering',
+      'Keep soil consistently moist during bloom set',
+      'Provide organic potassium feed for fruit retention'
+    ],
+    bestFor: 'Orchards, Large Containers & Backyards',
+  },
+  {
+    id: 'mango-young-fruit-sapling',
+    name: 'Early Fruiting Mango Sapling',
+    botanicalName: 'Mangifera indica (Hybrid Mango)',
+    category: 'Fruit Plants',
+    description: 'High-yielding hybrid mango plant showcasing young green mango fruit clusters forming right on the flowering panicle.',
+    price: 480,
+    originalPrice: 580,
+    inStock: true,
+    imageUrl: mangoYoungFruitsImg,
+    additionalImages: [
+      mangoBlossomCloseUpImg,
+      graftedMangoSaplingsFloweringImg,
+      mangoSaplingPolybagImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '3 Feet Plant',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Protect developing green fruit clusters from strong winds',
+      'Mulch near root base to retain ground moisture',
+      'Feed balanced organic compost after harvest'
+    ],
+    bestFor: 'Terrace Gardens, Orchards & Farmhouses',
   },
   {
     id: 'guava-plant',
@@ -413,12 +482,44 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: 'Expansive lush nursery grounds in Manwal, Jammu & Kashmir with organized plant sections.',
   },
   {
-    id: 'gal-2',
-    title: 'Grafted Mango & Guava Orchards',
+    id: 'gal-fruit-1',
+    title: 'Grafted Mango Sapling in Polybag',
     category: 'fruit',
     categoryLabel: 'Fruit Plants',
-    imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&q=80&w=800',
-    caption: 'Healthy grafted fruit saplings yielding high quality organic fruits.',
+    imageUrl: mangoSaplingPolybagImg,
+    caption: 'Healthy 2-3ft grafted mango sapling packaged in a black nursery polybag with rich green foliage.',
+  },
+  {
+    id: 'gal-fruit-2',
+    title: 'Blossoming Mango Sapling Batch',
+    category: 'fruit',
+    categoryLabel: 'Fruit Plants',
+    imageUrl: graftedMangoSaplingsFloweringImg,
+    caption: 'Grafted mango saplings in nursery polybags producing vibrant spring flower spikes.',
+  },
+  {
+    id: 'gal-fruit-3',
+    title: 'Mango Inflorescence Close-Up',
+    category: 'fruit',
+    categoryLabel: 'Fruit Plants',
+    imageUrl: mangoBlossomCloseUpImg,
+    caption: 'Dense pinkish-yellow mango blossom panicle full of fragrant nectar flowers.',
+  },
+  {
+    id: 'gal-fruit-4',
+    title: 'Young Green Mango Fruit Set',
+    category: 'fruit',
+    categoryLabel: 'Fruit Plants',
+    imageUrl: mangoYoungFruitsImg,
+    caption: 'Crisp green young developing mangoes formed on flowering branch clusters.',
+  },
+  {
+    id: 'gal-fruit-5',
+    title: 'High-Yield Mango Nursery Orchard',
+    category: 'fruit',
+    categoryLabel: 'Fruit Plants',
+    imageUrl: mangoNurseryFloweringImg,
+    caption: 'Shade-house nursery section showcasing all-season grafted mango varieties in full bloom.',
   },
   {
     id: 'gal-3',
