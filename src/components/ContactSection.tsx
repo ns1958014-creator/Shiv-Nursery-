@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Phone, MessageSquare, MapPin, Clock, Mail, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Phone, MessageSquare, MapPin, Clock, Mail, ShieldCheck, ArrowRight, Instagram } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const phone = '+91 8493029963';
   const rawPhone = '918493029963';
+  const instagramUrl = 'https://www.instagram.com/shiv_nursery60?igsh=ZHQzNTVoNGhyaG9x';
   const whatsappUrl = `https://wa.me/${rawPhone}?text=${encodeURIComponent(
     'Hello Shiv Nursery, I would like to inquire about plant availability, pricing, and visiting your nursery in Manwal, J&K.'
   )}`;
@@ -76,26 +77,55 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
+              {/* Instagram Card */}
+              <div className="p-5 rounded-2xl bg-gradient-to-r from-pink-950/40 via-purple-950/30 to-emerald-900/40 border border-pink-900/50 flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-pink-600 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                  <Instagram className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase text-pink-400 tracking-wider">Instagram Handle</div>
+                  <a
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-bold text-pink-200 hover:text-white hover:underline block mt-0.5"
+                  >
+                    @shiv_nursery60
+                  </a>
+                  <div className="text-xs text-emerald-200/70">Follow us for daily plant photos & stock updates</div>
+                </div>
+              </div>
+
             </div>
 
             {/* Clickable Action Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
                 href={`tel:+${rawPhone}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 text-emerald-950 font-bold text-base shadow-xl shadow-emerald-900/50 hover:from-emerald-400 hover:to-green-500 transition-all transform hover:-translate-y-0.5"
+                className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 text-emerald-950 font-bold text-sm shadow-xl shadow-emerald-900/50 hover:from-emerald-400 hover:to-green-500 transition-all transform hover:-translate-y-0.5"
               >
-                <Phone className="w-5 h-5 fill-emerald-950" />
-                <span>Call Now: 8493029963</span>
+                <Phone className="w-4 h-4 fill-emerald-950" />
+                <span>Call Now</span>
               </a>
 
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-emerald-900/80 hover:bg-emerald-800 border border-emerald-600 text-white font-bold text-base shadow-lg transition-all"
+                className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-emerald-900/80 hover:bg-emerald-800 border border-emerald-600 text-white font-bold text-sm shadow-lg transition-all"
               >
-                <MessageSquare className="w-5 h-5 text-emerald-400" />
-                <span>Chat on WhatsApp</span>
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <span>WhatsApp</span>
+              </a>
+
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 min-w-[160px] inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-sm shadow-lg transition-all"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>Instagram</span>
               </a>
             </div>
 

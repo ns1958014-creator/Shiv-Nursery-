@@ -1,5 +1,5 @@
 import React from 'react';
-import { Leaf, Phone, MapPin, Mail, MessageSquare, ArrowUp } from 'lucide-react';
+import { Leaf, Phone, MapPin, Mail, MessageSquare, ArrowUp, Instagram } from 'lucide-react';
 import { CATEGORIES } from '../data/plantsData';
 
 interface FooterProps {
@@ -10,6 +10,8 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const instagramUrl = 'https://www.instagram.com/shiv_nursery60?igsh=ZHQzNTVoNGhyaG9x';
 
   return (
     <footer className="bg-emerald-950 text-emerald-100 pt-16 pb-8 border-t border-emerald-900 relative">
@@ -53,6 +55,15 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
                 title="WhatsApp Chat"
               >
                 <MessageSquare className="w-4 h-4" />
+              </a>
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl bg-emerald-900/80 hover:bg-pink-900/60 text-pink-400 hover:text-pink-300 transition-colors border border-emerald-800 hover:border-pink-800/60"
+                title="Follow Shiv Nursery on Instagram"
+              >
+                <Instagram className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -130,6 +141,18 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory }) => {
               <div className="flex items-center gap-2.5 text-emerald-200/90">
                 <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>WhatsApp: +91 8493029963</span>
+              </div>
+
+              <div className="flex items-center gap-2.5 text-emerald-200/90">
+                <Instagram className="w-4 h-4 text-pink-400 shrink-0" />
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-pink-300 font-semibold"
+                >
+                  @shiv_nursery60 on Instagram
+                </a>
               </div>
             </div>
           </div>

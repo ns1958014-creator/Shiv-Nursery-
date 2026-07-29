@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, Phone, MessageSquare, ShoppingBag, Menu, X, MapPin } from 'lucide-react';
+import { Leaf, Phone, MessageSquare, ShoppingBag, Menu, X, MapPin, Instagram } from 'lucide-react';
 import { InquiryItem } from '../types';
 
 interface NavbarProps {
@@ -67,7 +67,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="hidden sm:flex items-center gap-1.5 text-emerald-200 hover:text-white transition-colors"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span>WhatsApp Inquiry</span>
+              <span>WhatsApp</span>
+            </a>
+            <span className="hidden md:inline text-emerald-700">|</span>
+            <a
+              href="https://www.instagram.com/shiv_nursery60?igsh=ZHQzNTVoNGhyaG9x"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1.5 text-pink-300 hover:text-white transition-colors"
+            >
+              <Instagram className="w-3.5 h-3.5 text-pink-400" />
+              <span>@shiv_nursery60</span>
             </a>
           </div>
         </div>
@@ -181,6 +191,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600" />
                 <span>Chat on WhatsApp</span>
+              </a>
+              <a
+                href="https://www.instagram.com/shiv_nursery60?igsh=ZHQzNTVoNGhyaG9x"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white text-sm font-medium shadow-sm"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>Instagram: @shiv_nursery60</span>
               </a>
             </div>
           </div>
