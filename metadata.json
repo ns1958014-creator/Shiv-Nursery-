@@ -1,0 +1,6 @@
+{
+  "name": "Shiv Nursery",
+  "description": "Modern, premium website for Shiv Nursery in Manwal, Jammu & Kashmir featuring fresh plants, fruit plants, flower plants, decorative plants, gallery, customer reviews, and online plant inquiries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
