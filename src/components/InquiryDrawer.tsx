@@ -9,6 +9,7 @@ interface InquiryDrawerProps {
   onUpdateQuantity: (plantId: string, delta: number) => void;
   onRemoveItem: (plantId: string) => void;
   onClearAll: () => void;
+  onOpenCheckout: () => void;
 }
 
 export const InquiryDrawer: React.FC<InquiryDrawerProps> = ({
@@ -18,6 +19,7 @@ export const InquiryDrawer: React.FC<InquiryDrawerProps> = ({
   onUpdateQuantity,
   onRemoveItem,
   onClearAll,
+  onOpenCheckout,
 }) => {
   if (!isOpen) return null;
 
@@ -126,23 +128,35 @@ export const InquiryDrawer: React.FC<InquiryDrawerProps> = ({
 
         {/* Footer Actions */}
         {items.length > 0 && (
-          <div className="p-6 bg-white border-t border-emerald-100 space-y-4">
+          <div className="p-6 bg-white border-t border-emerald-100 space-y-3">
             <div className="flex items-center justify-between text-emerald-950">
               <span className="text-sm font-semibold">Estimated Total Value:</span>
               <span className="text-xl font-serif font-bold text-emerald-800">₹{totalPrice}</span>
             </div>
 
             <button
-              onClick={handleSendWhatsAppInquiry}
-              className="w-full py-3.5 px-4 rounded-xl bg-emerald-800 text-white font-bold text-sm hover:bg-emerald-900 shadow-lg shadow-emerald-900/20 transition-all flex items-center justify-center gap-2"
+              onClick={() => {
+                onClose();
+                onOpenCheckout();
+              }}
+              className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold text-sm hover:from-emerald-700 hover:to-green-700 shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-300" />
-              <span>Send Bag Inquiry on WhatsApp</span>
+              <ShoppingBag className="w-4 h-4 text-emerald-100" />
+              <span>Proceed to Checkout & Pay Online</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={handleSendWhatsAppInquiry}
+              className="w-full py-2.5 px-4 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold text-xs border border-emerald-200 transition-all flex items-center justify-center gap-2"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Or Send Inquiry on WhatsApp</span>
             </button>
 
             <button
               onClick={onClearAll}
-              className="w-full text-center text-xs text-emerald-700 hover:text-emerald-950 transition-colors"
+              className="w-full text-center text-[11px] text-emerald-700 hover:text-emerald-950 transition-colors pt-1"
             >
               Clear Inquiry Bag
             </button>

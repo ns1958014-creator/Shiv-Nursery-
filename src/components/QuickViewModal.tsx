@@ -7,6 +7,7 @@ interface QuickViewModalProps {
   onClose: () => void;
   onAddToInquiry: (plant: Plant) => void;
   isInBag: boolean;
+  onBuyNow?: (plant: Plant) => void;
 }
 
 export const QuickViewModal: React.FC<QuickViewModalProps> = ({
@@ -14,6 +15,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   onClose,
   onAddToInquiry,
   isInBag,
+  onBuyNow,
 }) => {
   const [activeImage, setActiveImage] = React.useState<string | null>(null);
 
@@ -159,37 +161,41 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-4 border-t border-emerald-100 flex items-center gap-3">
+            <div className="pt-4 border-t border-emerald-100 flex flex-col sm:flex-row items-center gap-2.5">
               <button
                 onClick={() => onAddToInquiry(plant)}
-                className={`flex-1 py-3 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                className={`w-full sm:flex-1 py-3 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                   isInBag
-                    ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                    ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
                     : 'bg-emerald-800 text-white hover:bg-emerald-900 shadow-md'
                 }`}
               >
                 {isInBag ? (
                   <>
                     <Check className="w-4 h-4 text-emerald-700" />
-                    <span>In Inquiry Bag</span>
+                    <span>In Cart</span>
                   </>
                 ) : (
                   <>
                     <ShoppingBag className="w-4 h-4" />
-                    <span>Add to Inquiry</span>
+                    <span>Add to Cart</span>
                   </>
                 )}
               </button>
 
-              <a
-                href={`https://wa.me/918493029963?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-3 px-4 rounded-xl bg-emerald-50 text-emerald-900 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold transition-colors flex items-center gap-1.5"
-              >
-                <MessageSquare className="w-4 h-4 text-emerald-600" />
-                <span>WhatsApp Buy</span>
-              </a>
+              {onBuyNow && (
+                <button
+                  onClick={() => {
+                    if (!isInBag) onAddToInquiry(plant);
+                    onClose();
+                    onBuyNow(plant);
+                  }}
+                  className="w-full sm:flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold text-xs shadow-md shadow-emerald-600/30 transition-all flex items-center justify-center gap-1.5"
+                >
+                  <ShoppingBag className="w-4 h-4 text-emerald-100" />
+                  <span>Buy Now & Pay</span>
+                </button>
+              )}
             </div>
 
           </div>

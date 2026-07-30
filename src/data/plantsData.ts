@@ -36,6 +36,13 @@ import fruitLycheeLitchiImg from '../assets/images/fruit_lychee_litchi_178543679
 import fruitDragonFruitImg from '../assets/images/fruit_dragon_fruit_1785436814015.jpg';
 import fruitAmlaGooseberryImg from '../assets/images/fruit_amla_gooseberry_1785436826646.jpg';
 
+import seasonalPetuniaMixImg from '../assets/images/seasonal_petunia_mix_1785437141255.jpg';
+import seasonalGuldaudiMumsImg from '../assets/images/seasonal_guldaudi_mums_1785437154773.jpg';
+import seasonalDahliaGiantImg from '../assets/images/seasonal_dahlia_giant_1785437166801.jpg';
+import seasonalSalviaRedImg from '../assets/images/seasonal_salvia_red_1785437178956.jpg';
+import seasonalPansyMixImg from '../assets/images/seasonal_pansy_mix_1785437191532.jpg';
+import seasonalZinniaVibrantImg from '../assets/images/seasonal_zinnia_vibrant_1785437202757.jpg';
+
 export const HERO_IMAGE = heroBannerImg;
 export const NURSERY_OVERVIEW_IMAGE = nurseryOverviewImg;
 
@@ -83,9 +90,9 @@ export const CATEGORIES: Category[] = [
   {
     id: 'seasonal-plants',
     title: 'Seasonal Plants',
-    description: 'Fresh winter & summer annual varieties that burst with seasonal blossoms.',
-    imageUrl: 'https://images.unsplash.com/photo-1596727147705-61a532a659bd?auto=format&fit=crop&q=80&w=800',
-    count: 15,
+    description: 'Fresh winter & summer annual varieties that burst with vibrant seasonal blossoms.',
+    imageUrl: seasonalPetuniaMixImg,
+    count: 22,
     badge: 'Limited Season',
   },
   {
@@ -918,6 +925,174 @@ export const FEATURED_PLANTS: Plant[] = [
     bestFor: 'Compound Walls, Arches & Sun Balconies',
   },
   {
+    id: 'seasonal-petunia-mix',
+    name: 'Vibrant Petunia Multi-Color Bedding',
+    botanicalName: 'Petunia × atkinsiana',
+    category: 'Seasonal Plants',
+    description: 'Lush, trumpet-shaped annual blooms in rich shades of magenta, pink, purple, and white. Perfect for winter and spring flowerbed displays.',
+    price: 70,
+    originalPrice: 100,
+    inStock: true,
+    imageUrl: seasonalPetuniaMixImg,
+    additionalImages: [
+      seasonalPansyMixImg,
+      seasonalSalviaRedImg,
+      seasonalGuldaudiMumsImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '0.8 Foot Nursery Polybag',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Pinch faded blooms (deadheading) to prolong blooming',
+      'Water regularly at the base without wetting flowers',
+      'Thrives in bright sunny balconies and garden beds'
+    ],
+    bestFor: 'Window Boxes, Hanging Baskets & Edging',
+  },
+  {
+    id: 'seasonal-guldaudi-mums',
+    name: 'Golden & Burgundy Chrysanthemum (Guldaudi)',
+    botanicalName: 'Chrysanthemum morifolium',
+    category: 'Seasonal Plants',
+    description: 'Spectacular potted Guldaudi blossoming with dense golden yellow and deep burgundy multi-petal flowers.',
+    price: 120,
+    originalPrice: 160,
+    inStock: true,
+    imageUrl: seasonalGuldaudiMumsImg,
+    additionalImages: [
+      seasonalDahliaGiantImg,
+      seasonalPetuniaMixImg,
+      seasonalSalviaRedImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Moderate',
+    height: '1.2 Feet Nursery Pot',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Keep soil evenly moist during flowering season',
+      'Needs 6 hours of full morning sunlight',
+      'Fertilize weekly with liquid organic feed during bud formation'
+    ],
+    bestFor: 'Verandahs, Patios & Festival Decoration',
+  },
+  {
+    id: 'seasonal-dahlia-giant',
+    name: 'Giant Double-Petal Dahlia Plant',
+    botanicalName: 'Dahlia pinnata',
+    category: 'Seasonal Plants',
+    description: 'Show-stopping giant double-petal pink and cream Dahlia plant boasting large decorative flower heads.',
+    price: 150,
+    originalPrice: 190,
+    inStock: true,
+    imageUrl: seasonalDahliaGiantImg,
+    additionalImages: [
+      seasonalGuldaudiMumsImg,
+      seasonalZinniaVibrantImg,
+      seasonalPetuniaMixImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '1.5 Feet Flowering Pot',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Stake main stem to support heavy flowers',
+      'Protect from strong dry winds',
+      'Provide deep watering when top soil feels dry'
+    ],
+    bestFor: 'Centerpiece Garden Beds & Exhibition Pots',
+  },
+  {
+    id: 'seasonal-salvia-red',
+    name: 'Scarlet Red Salvia Flower Spikes',
+    botanicalName: 'Salvia splendens',
+    category: 'Seasonal Plants',
+    description: 'Dazzling seasonal bedding plant featuring fiery red upright flower spikes over lush green foliage.',
+    price: 85,
+    originalPrice: 110,
+    inStock: true,
+    imageUrl: seasonalSalviaRedImg,
+    additionalImages: [
+      seasonalPetuniaMixImg,
+      seasonalPansyMixImg,
+      seasonalZinniaVibrantImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '1 Foot Bedding Tray',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Prune spent flower spikes to trigger fresh blooms',
+      'Keep soil well-drained and organic rich',
+      'Water morning hours for optimal hydration'
+    ],
+    bestFor: 'Border Beds, Mass Plantings & Lawns',
+  },
+  {
+    id: 'seasonal-pansy-mix',
+    name: 'Velvet Pansy Face Plants (Mix Color)',
+    botanicalName: 'Viola × wittrockiana',
+    category: 'Seasonal Plants',
+    description: 'Charming cool-weather annuals with velvety blotched face flowers in deep violet, yellow, and bi-colors.',
+    price: 65,
+    originalPrice: 90,
+    inStock: true,
+    imageUrl: seasonalPansyMixImg,
+    additionalImages: [
+      seasonalPetuniaMixImg,
+      seasonalSalviaRedImg,
+      seasonalGuldaudiMumsImg,
+    ],
+    sunlight: 'Indirect Bright',
+    waterNeeded: 'Moderate',
+    growthRate: 'Moderate',
+    height: '0.6 Foot Potting Tray',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Prefers cool sunny mornings or bright light',
+      'Keep soil damp but avoid standing water',
+      'Remove old flowers for continuous blooming'
+    ],
+    bestFor: 'Window Planters, Table Containers & Balconies',
+  },
+  {
+    id: 'seasonal-zinnia-vibrant',
+    name: 'Vibrant Sun Zinnia (Multi-Color Annual)',
+    botanicalName: 'Zinnia elegans',
+    category: 'Seasonal Plants',
+    description: 'Heat-hardy cheerful annual flowers in neon pink, fiery orange, and yellow that attract butterflies.',
+    price: 75,
+    originalPrice: 100,
+    inStock: true,
+    imageUrl: seasonalZinniaVibrantImg,
+    additionalImages: [
+      seasonalDahliaGiantImg,
+      seasonalPetuniaMixImg,
+      seasonalSalviaRedImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '1 Foot Nursery Bag',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Loves bright direct sunshine and warm weather',
+      'Water at soil level to prevent leaf mildew',
+      'Feed balanced fertilizer during active growth'
+    ],
+    bestFor: 'Butterfly Gardens, Sun Terraces & Flower Borders',
+  },
+  {
     id: 'kashmiri-apple',
     name: 'Kashmiri Delicious Apple Sapling',
     botanicalName: 'Malus domestica',
@@ -1215,6 +1390,54 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     categoryLabel: 'Indoor Plants',
     imageUrl: indoorFiddleLeafFigImg,
     caption: 'Tall Ficus Lyrata with broad violin-shaped leaves elevating home interior design.',
+  },
+  {
+    id: 'gal-ses-1',
+    title: 'Multi-Color Petunia Flower Bed',
+    category: 'seasonal',
+    categoryLabel: 'Seasonal Plants',
+    imageUrl: seasonalPetuniaMixImg,
+    caption: 'Abundant trumpet-shaped Petunia annual flowers in vibrant shades of pink, purple, and white.',
+  },
+  {
+    id: 'gal-ses-2',
+    title: 'Golden & Burgundy Guldaudi Chrysanthemums',
+    category: 'seasonal',
+    categoryLabel: 'Seasonal Plants',
+    imageUrl: seasonalGuldaudiMumsImg,
+    caption: 'Full-blooming potted Chrysanthemum plants in warm autumn gold and rich burgundy colors.',
+  },
+  {
+    id: 'gal-ses-3',
+    title: 'Show-Stopping Double-Petal Dahlia',
+    category: 'seasonal',
+    categoryLabel: 'Seasonal Plants',
+    imageUrl: seasonalDahliaGiantImg,
+    caption: 'Large double-petal Dahlia flowers cultivated in nursery pots for garden display.',
+  },
+  {
+    id: 'gal-ses-4',
+    title: 'Fiery Red Salvia Spikes',
+    category: 'seasonal',
+    categoryLabel: 'Seasonal Plants',
+    imageUrl: seasonalSalviaRedImg,
+    caption: 'Dense scarlet Salvia spikes creating vivid red borders in nursery beds.',
+  },
+  {
+    id: 'gal-ses-5',
+    title: 'Velvet Pansy Face Flowers',
+    category: 'seasonal',
+    categoryLabel: 'Seasonal Plants',
+    imageUrl: seasonalPansyMixImg,
+    caption: 'Charming multi-colored Pansies with distinctive blotched petals in potting trays.',
+  },
+  {
+    id: 'gal-ses-6',
+    title: 'Vibrant Butterfly Zinnia Blooms',
+    category: 'seasonal',
+    categoryLabel: 'Seasonal Plants',
+    imageUrl: seasonalZinniaVibrantImg,
+    caption: 'Sun-loving bright Zinnia blooms in neon pink, golden, and fiery orange.',
   },
   {
     id: 'gal-4',

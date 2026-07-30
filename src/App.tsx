@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { HeroSection } from './components/HeroSection';
@@ -15,16 +15,39 @@ import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { InquiryDrawer } from './components/InquiryDrawer';
 import { QuickViewModal } from './components/QuickViewModal';
+import { CheckoutModal } from './components/CheckoutModal';
+import { OrderHistoryModal } from './components/OrderHistoryModal';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
-import { InquiryItem, Plant, CategoryType } from './types';
+import { InquiryItem, Plant, Order } from './types';
 
 export default function App() {
   const [inquiryItems, setInquiryItems] = useState<InquiryItem[]>([]);
   const [isInquiryDrawerOpen, setIsInquiryDrawerOpen] = useState(false);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+  const [isOrderHistoryModalOpen, setIsOrderHistoryModalOpen] = useState(false);
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('All');
   const [quickViewPlant, setQuickViewPlant] = useState<Plant | null>(null);
 
-  // Add plant to inquiry bag
+  // Load saved orders from localStorage
+  const [orders, setOrders] = useState<Order[]>(() => {
+    try {
+      const saved = localStorage.getItem('shiv_nursery_orders');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // Save orders to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('shiv_nursery_orders', JSON.stringify(orders));
+    } catch (e) {
+      console.error('Failed to save orders to localStorage', e);
+    }
+  }, [orders]);
+
+  // Add plant to inquiry bag / cart
   const handleAddToInquiry = (plant: Plant) => {
     setInquiryItems((prev) => {
       const existing = prev.find((item) => item.plant.id === plant.id);
@@ -35,6 +58,20 @@ export default function App() {
       }
       return [...prev, { plant, quantity: 1 }];
     });
+  };
+
+  // Direct Buy Now handler
+  const handleBuyNow = (plant: Plant) => {
+    if (!isInBag(plant.id)) {
+      handleAddToInquiry(plant);
+    }
+    setIsCheckoutModalOpen(true);
+  };
+
+  // Order completion handler
+  const handleOrderComplete = (newOrder: Order) => {
+    setOrders((prev) => [newOrder, ...prev]);
+    setInquiryItems([]); // Clear cart
   };
 
   // Update quantity in inquiry bag
@@ -86,6 +123,8 @@ export default function App() {
         inquiryItems={inquiryItems}
         onOpenInquiryDrawer={() => setIsInquiryDrawerOpen(true)}
         onNavigateCategory={handleSelectCategory}
+        onOpenOrderHistory={() => setIsOrderHistoryModalOpen(true)}
+        orderCount={orders.length}
       />
 
       {/* Main Page Sections */}
@@ -141,6 +180,24 @@ export default function App() {
         onUpdateQuantity={handleUpdateQuantity}
         onRemoveItem={handleRemoveItem}
         onClearAll={handleClearAllInquiries}
+        onOpenCheckout={() => setIsCheckoutModalOpen(true)}
+      />
+
+      {/* Checkout & Instant Payment Modal */}
+      <CheckoutModal
+        isOpen={isCheckoutModalOpen}
+        onClose={() => setIsCheckoutModalOpen(false)}
+        items={inquiryItems}
+        onUpdateQuantity={handleUpdateQuantity}
+        onRemoveItem={handleRemoveItem}
+        onOrderComplete={handleOrderComplete}
+      />
+
+      {/* Order History & Track Orders Modal */}
+      <OrderHistoryModal
+        isOpen={isOrderHistoryModalOpen}
+        onClose={() => setIsOrderHistoryModalOpen(false)}
+        orders={orders}
       />
 
       {/* Quick View Care Details Modal */}
@@ -149,6 +206,7 @@ export default function App() {
         onClose={() => setQuickViewPlant(null)}
         onAddToInquiry={handleAddToInquiry}
         isInBag={quickViewPlant ? isInBag(quickViewPlant.id) : false}
+        onBuyNow={(plant) => handleBuyNow(plant)}
       />
 
       {/* Fixed WhatsApp Floating Chat Widget */}

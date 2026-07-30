@@ -243,19 +243,19 @@ export const FeaturedPlantsSection: React.FC<FeaturedPlantsSectionProps> = ({
                         onClick={() => onAddToInquiry(plant)}
                         className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                           added
-                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                            ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
                             : 'bg-emerald-800 text-white hover:bg-emerald-900 shadow-md shadow-emerald-900/20'
                         }`}
                       >
                         {added ? (
                           <>
                             <Check className="w-4 h-4 text-emerald-700" />
-                            <span>In Inquiry Bag</span>
+                            <span>In Cart</span>
                           </>
                         ) : (
                           <>
                             <ShoppingBag className="w-4 h-4" />
-                            <span>Add to Inquiry</span>
+                            <span>Add to Cart</span>
                           </>
                         )}
                       </button>

@@ -41,7 +41,7 @@ export interface Category {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'nursery' | 'fruit' | 'flower' | 'decorative' | 'indoor' | 'customers' | 'landscapes';
+  category: 'nursery' | 'fruit' | 'flower' | 'decorative' | 'indoor' | 'seasonal' | 'customers' | 'landscapes';
   categoryLabel: string;
   imageUrl: string;
   caption: string;
@@ -69,6 +69,46 @@ export interface WhyChooseItem {
 export interface InquiryItem {
   plant: Plant;
   quantity: number;
+}
+
+export interface ShippingAddress {
+  fullName: string;
+  phone: string;
+  email: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+  deliveryType: 'express' | 'pickup' | 'farm_truck';
+  notes?: string;
+}
+
+export type PaymentMethod = 'upi' | 'card' | 'netbanking' | 'cod';
+
+export type OrderStatus = 'confirmed' | 'packing' | 'dispatched' | 'out_for_delivery' | 'delivered';
+
+export interface OrderItem {
+  plantId: string;
+  plantName: string;
+  price: number;
+  quantity: number;
+  imageUrl: string;
+  category: string;
+}
+
+export interface Order {
+  id: string;
+  createdAt: string;
+  items: OrderItem[];
+  shippingAddress: ShippingAddress;
+  paymentMethod: PaymentMethod;
+  subtotal: number;
+  discount: number;
+  shippingFee: number;
+  totalAmount: number;
+  status: OrderStatus;
+  couponCode?: string;
+  estimatedDelivery: string;
 }
 
 export interface InquiryFormData {

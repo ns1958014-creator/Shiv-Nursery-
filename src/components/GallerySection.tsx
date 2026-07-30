@@ -14,6 +14,7 @@ export const GallerySection: React.FC = () => {
     { id: 'fruit', label: 'Fruit Plants' },
     { id: 'flower', label: 'Flower Plants' },
     { id: 'indoor', label: 'Indoor Plants' },
+    { id: 'seasonal', label: 'Seasonal Plants' },
     { id: 'decorative', label: 'Decorative Plants' },
     { id: 'customers', label: 'Customers' },
     { id: 'landscapes', label: 'Garden Landscapes' },

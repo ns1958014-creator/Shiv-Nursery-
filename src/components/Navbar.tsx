@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, Phone, MessageSquare, ShoppingBag, Menu, X, MapPin, Instagram } from 'lucide-react';
+import { Leaf, Phone, MessageSquare, ShoppingBag, Menu, X, MapPin, Instagram, PackageCheck } from 'lucide-react';
 import { InquiryItem } from '../types';
 
 interface NavbarProps {
   inquiryItems: InquiryItem[];
   onOpenInquiryDrawer: () => void;
   onNavigateCategory: (catTitle: string) => void;
+  onOpenOrderHistory?: () => void;
+  orderCount?: number;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   inquiryItems,
   onOpenInquiryDrawer,
   onNavigateCategory,
+  onOpenOrderHistory,
+  orderCount = 0,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -121,19 +125,38 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-3">
-            {/* Inquiry Bag Button */}
+          <div className="flex items-center gap-2.5">
+            {/* Track Orders Button */}
+            {onOpenOrderHistory && (
+              <button
+                onClick={onOpenOrderHistory}
+                className="relative p-2.5 rounded-xl bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition-colors border border-emerald-200/60 flex items-center gap-1.5"
+                title="Track Orders & Invoices"
+              >
+                <PackageCheck className="w-4 h-4 text-emerald-700" />
+                <span className="hidden xl:inline text-xs font-semibold text-emerald-900">
+                  Track Orders
+                </span>
+                {orderCount > 0 && (
+                  <span className="bg-emerald-800 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                    {orderCount}
+                  </span>
+                )}
+              </button>
+            )}
+
+            {/* Shopping Cart / Inquiry Bag Button */}
             <button
               onClick={onOpenInquiryDrawer}
-              className="relative p-2.5 rounded-xl bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition-colors border border-emerald-200/60 flex items-center gap-2"
-              title="View Plant Inquiry Bag"
+              className="relative p-2.5 rounded-xl bg-emerald-800 text-white hover:bg-emerald-900 transition-colors shadow-sm flex items-center gap-2"
+              title="View Shopping Cart & Plant Inquiry Bag"
             >
-              <ShoppingBag className="w-5 h-5 text-emerald-700" />
-              <span className="hidden md:inline text-xs font-semibold text-emerald-900">
-                Inquiry Bag
+              <ShoppingBag className="w-4 h-4 text-emerald-200" />
+              <span className="hidden md:inline text-xs font-semibold">
+                Cart
               </span>
               {totalInquiryCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-emerald-600 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center animate-pulse shadow-sm">
+                <span className="bg-emerald-400 text-emerald-950 text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
                   {totalInquiryCount}
                 </span>
               )}
@@ -176,6 +199,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             <div className="pt-3 border-t border-emerald-100 flex flex-col gap-2">
+              {onOpenOrderHistory && (
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    onOpenOrderHistory();
+                  }}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-800 text-white text-sm font-medium shadow-sm"
+                >
+                  <PackageCheck className="w-4 h-4 text-emerald-300" />
+                  <span>Track Orders & Invoices ({orderCount})</span>
+                </button>
+              )}
               <a
                 href="tel:+918493029963"
                 className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-medium"
