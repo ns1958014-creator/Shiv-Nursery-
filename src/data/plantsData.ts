@@ -8,6 +8,12 @@ import mangoBlossomCloseUpImg from '../assets/images/mango_blossom_close_up_1785
 import mangoYoungFruitsImg from '../assets/images/mango_young_fruits_1785311393664.jpg';
 import graftedMangoSaplingsFloweringImg from '../assets/images/grafted_mango_saplings_flowering_1785311412529.jpg';
 
+import flowerRoseHybridImg from '../assets/images/flower_rose_hybrid_1785436016202.jpg';
+import flowerHibiscusRedImg from '../assets/images/flower_hibiscus_red_1785436035692.jpg';
+import flowerJasmineMograImg from '../assets/images/flower_jasmine_mogra_1785436050533.jpg';
+import flowerBougainvilleaImg from '../assets/images/flower_bougainvillea_1785436064115.jpg';
+import flowerMarigoldGendaImg from '../assets/images/flower_marigold_genda_1785436079065.jpg';
+
 export const HERO_IMAGE = heroBannerImg;
 export const NURSERY_OVERVIEW_IMAGE = nurseryOverviewImg;
 
@@ -24,7 +30,7 @@ export const CATEGORIES: Category[] = [
     id: 'flower-plants',
     title: 'Flower Plants',
     description: 'Vibrant blooming perennial & annual roses, hibiscus, jasmine, and exotic blooms.',
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800',
+    imageUrl: flowerRoseHybridImg,
     count: 36,
     badge: 'Aromatic & Colorful',
   },
@@ -221,7 +227,12 @@ export const FEATURED_PLANTS: Plant[] = [
     price: 150,
     originalPrice: 190,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800',
+    imageUrl: flowerRoseHybridImg,
+    additionalImages: [
+      flowerHibiscusRedImg,
+      flowerJasmineMograImg,
+      flowerBougainvilleaImg,
+    ],
     sunlight: 'Full Sun',
     waterNeeded: 'Moderate',
     growthRate: 'Fast',
@@ -244,19 +255,79 @@ export const FEATURED_PLANTS: Plant[] = [
     price: 120,
     originalPrice: 160,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1567684014761-b65e2e59b9eb?auto=format&fit=crop&q=80&w=800',
+    imageUrl: flowerHibiscusRedImg,
+    additionalImages: [
+      flowerRoseHybridImg,
+      flowerJasmineMograImg,
+      flowerMarigoldGendaImg,
+    ],
     sunlight: 'Full Sun',
     waterNeeded: 'Moderate',
     growthRate: 'Moderate',
     height: '2 Feet',
     featured: true,
-    isPopular: false,
+    isPopular: true,
     careTips: [
       'Thrives in warm, sunny conditions',
       'Pinch growing tips for bushier foliage',
       'Inspect for mealybugs during humid season'
     ],
     bestFor: 'Hedge Borders & Pots',
+  },
+  {
+    id: 'jasmine-mogra-plant',
+    name: 'Arabian Jasmine / Mogra Plant',
+    botanicalName: 'Jasminum sambac',
+    category: 'Flower Plants',
+    description: 'Highly fragrant star-shaped white blossoms that release sweet perfume, especially in the evening.',
+    price: 140,
+    originalPrice: 180,
+    inStock: true,
+    imageUrl: flowerJasmineMograImg,
+    additionalImages: [
+      flowerRoseHybridImg,
+      flowerHibiscusRedImg,
+      flowerBougainvilleaImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '1.5 Feet Shrub',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Prune lightly after blooming season',
+      'Requires morning sunlight for rich fragrance',
+      'Feed organic liquid fertilizer bi-weekly'
+    ],
+    bestFor: 'Balconies, Entrances & Pooja Gardens',
+  },
+  {
+    id: 'marigold-genda-plant',
+    name: 'Golden Marigold / Genda Plant',
+    botanicalName: 'Tagetes erecta',
+    category: 'Flower Plants',
+    description: 'Bright golden-orange blossoms bursting with festive color. Excellent natural pest deterrent for garden beds.',
+    price: 90,
+    originalPrice: 120,
+    inStock: true,
+    imageUrl: flowerMarigoldGendaImg,
+    additionalImages: [
+      flowerRoseHybridImg,
+      flowerHibiscusRedImg,
+    ],
+    sunlight: 'Full Sun',
+    waterNeeded: 'Moderate',
+    growthRate: 'Fast',
+    height: '1 Foot Flowering Polybag',
+    featured: true,
+    isPopular: true,
+    careTips: [
+      'Pinch top flowers to promote bushier blooming',
+      'Pots require good drainage holes',
+      'Water thoroughly when soil surface is dry'
+    ],
+    bestFor: 'Festive Decor, Pots & Kitchen Garden Borders',
   },
   {
     id: 'areca-palm',
@@ -336,13 +407,18 @@ export const FEATURED_PLANTS: Plant[] = [
     price: 260,
     originalPrice: 340,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1596727147705-61a532a659bd?auto=format&fit=crop&q=80&w=800',
+    imageUrl: flowerBougainvilleaImg,
+    additionalImages: [
+      flowerRoseHybridImg,
+      flowerHibiscusRedImg,
+      flowerJasmineMograImg,
+    ],
     sunlight: 'Full Sun',
     waterNeeded: 'Low',
     growthRate: 'Fast',
     height: '2.5 Feet Climber',
     featured: true,
-    isPopular: false,
+    isPopular: true,
     careTips: [
       'Thrives in scorching hot full sun',
       'Water sparingly once established',
@@ -522,12 +598,44 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     caption: 'Shade-house nursery section showcasing all-season grafted mango varieties in full bloom.',
   },
   {
-    id: 'gal-3',
-    title: 'English Rose & Hybrid Hibiscus',
+    id: 'gal-fl-1',
+    title: 'Hybrid English Rose Bush',
     category: 'flower',
     categoryLabel: 'Flower Plants',
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800',
-    caption: 'Vibrant blooming rose and hibiscus section radiating colors and sweet scent.',
+    imageUrl: flowerRoseHybridImg,
+    caption: 'Vibrant hybrid velvet red and soft pink double-petal roses blooming in nursery garden pots.',
+  },
+  {
+    id: 'gal-fl-2',
+    title: 'Double-Petal Crimson Hibiscus (Gudhal)',
+    category: 'flower',
+    categoryLabel: 'Flower Plants',
+    imageUrl: flowerHibiscusRedImg,
+    caption: 'Striking red Hibiscus Gudhal flower with glossy foliage grown for worship and garden decoration.',
+  },
+  {
+    id: 'gal-fl-3',
+    title: 'Aromatic Arabian Jasmine (Mogra)',
+    category: 'flower',
+    categoryLabel: 'Flower Plants',
+    imageUrl: flowerJasmineMograImg,
+    caption: 'Fragrant star-shaped white Mogra blossoms releasing perfume at dusk.',
+  },
+  {
+    id: 'gal-fl-4',
+    title: 'Cascading Bougainvillea Bloom',
+    category: 'flower',
+    categoryLabel: 'Flower Plants',
+    imageUrl: flowerBougainvilleaImg,
+    caption: 'Sun-loving magenta and orange Bougainvillea flowers in heavy bloom at our outdoor nursery.',
+  },
+  {
+    id: 'gal-fl-5',
+    title: 'Golden Marigold (Genda) Polybags',
+    category: 'flower',
+    categoryLabel: 'Flower Plants',
+    imageUrl: flowerMarigoldGendaImg,
+    caption: 'Bright golden orange Marigold flowers cultivated in nursery polybags for festive occasions.',
   },
   {
     id: 'gal-4',
