@@ -17,7 +17,6 @@ import { InquiryDrawer } from './components/InquiryDrawer';
 import { QuickViewModal } from './components/QuickViewModal';
 import { CheckoutModal } from './components/CheckoutModal';
 import { OrderHistoryModal } from './components/OrderHistoryModal';
-import { ReadingModeModal } from './components/ReadingModeModal';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 import { InquiryItem, Plant, Order } from './types';
 
@@ -26,7 +25,6 @@ export default function App() {
   const [isInquiryDrawerOpen, setIsInquiryDrawerOpen] = useState(false);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [isOrderHistoryModalOpen, setIsOrderHistoryModalOpen] = useState(false);
-  const [isReadingModeModalOpen, setIsReadingModeModalOpen] = useState(false);
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('All');
   const [quickViewPlant, setQuickViewPlant] = useState<Plant | null>(null);
 
@@ -127,8 +125,6 @@ export default function App() {
         onNavigateCategory={handleSelectCategory}
         onOpenOrderHistory={() => setIsOrderHistoryModalOpen(true)}
         orderCount={orders.length}
-        onOpenReadingMode={() => setIsReadingModeModalOpen(true)}
-        isReadingModeActive={isReadingModeModalOpen}
       />
 
       {/* Main Page Sections */}
@@ -211,14 +207,6 @@ export default function App() {
         onAddToInquiry={handleAddToInquiry}
         isInBag={quickViewPlant ? isInBag(quickViewPlant.id) : false}
         onBuyNow={(plant) => handleBuyNow(plant)}
-      />
-
-      {/* Reading & Source Code Mode Modal */}
-      <ReadingModeModal
-        isOpen={isReadingModeModalOpen}
-        onClose={() => setIsReadingModeModalOpen(false)}
-        selectedPlant={quickViewPlant}
-        recentOrder={orders[0] || null}
       />
 
       {/* Fixed WhatsApp Floating Chat Widget */}

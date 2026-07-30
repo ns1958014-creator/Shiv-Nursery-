@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Plant } from '../types';
-import { X, Sun, Droplets, TrendingUp, Ruler, Check, MessageSquare, ShoppingBag, Sprout, Code, Copy, Eye } from 'lucide-react';
+import { X, Sun, Droplets, TrendingUp, Ruler, Check, MessageSquare, ShoppingBag, Sprout } from 'lucide-react';
 
 interface QuickViewModalProps {
   plant: Plant | null;
@@ -8,7 +8,6 @@ interface QuickViewModalProps {
   onAddToInquiry: (plant: Plant) => void;
   isInBag: boolean;
   onBuyNow?: (plant: Plant) => void;
-  onOpenCodeReader?: (plant: Plant) => void;
 }
 
 export const QuickViewModal: React.FC<QuickViewModalProps> = ({
@@ -17,11 +16,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
   onAddToInquiry,
   isInBag,
   onBuyNow,
-  onOpenCodeReader,
 }) => {
   const [activeImage, setActiveImage] = React.useState<string | null>(null);
-  const [isReadingCodeMode, setIsReadingCodeMode] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   React.useEffect(() => {
     if (plant) {
@@ -44,78 +40,15 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
     <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
       <div className="bg-white rounded-3xl max-w-2xl w-full border border-emerald-100 shadow-2xl relative overflow-hidden my-8 animate-in zoom-in-95 duration-200">
         
-        {/* Top Control Bar */}
-        <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-          <button
-            onClick={() => setIsReadingCodeMode(!isReadingCodeMode)}
-            className={`px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-md ${
-              isReadingCodeMode
-                ? 'bg-emerald-950 text-emerald-300 border border-emerald-700'
-                : 'bg-white/90 text-emerald-950 hover:bg-white border border-emerald-200'
-            }`}
-          >
-            {isReadingCodeMode ? (
-              <>
-                <Eye className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Visual View</span>
-              </>
-            ) : (
-              <>
-                <Code className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Reading Mode (Code)</span>
-              </>
-            )}
-          </button>
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-white/90 text-emerald-950 hover:bg-white shadow-md transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
 
-          <button
-            onClick={onClose}
-            className="p-2 rounded-full bg-white/90 text-emerald-950 hover:bg-white shadow-md transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* READING CODE MODE VIEW */}
-        {isReadingCodeMode ? (
-          <div className="p-6 sm:p-8 bg-slate-950 text-emerald-300 font-mono text-xs space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <div className="flex items-center gap-2">
-                <Code className="w-4 h-4 text-emerald-400" />
-                <span className="font-bold text-sm text-emerald-400 font-sans">Botanical Data Object</span>
-                <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">
-                  {plant.id}.json
-                </span>
-              </div>
-
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(JSON.stringify(plant, null, 2));
-                  setCopied(true);
-                  setTimeout(() => setCopied(false), 2000);
-                }}
-                className="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center gap-1 font-sans text-xs"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copied ? 'Copied' : 'Copy Code'}</span>
-              </button>
-            </div>
-
-            <pre className="p-4 bg-slate-900 rounded-2xl overflow-x-auto text-emerald-300 max-h-96 leading-relaxed border border-slate-800">
-              {JSON.stringify(plant, null, 2)}
-            </pre>
-
-            <div className="flex items-center justify-between pt-2 border-t border-slate-800 font-sans text-xs text-slate-400">
-              <span>Shiv Nursery J&K • Structured Plant Schema</span>
-              <button
-                onClick={() => setIsReadingCodeMode(false)}
-                className="text-emerald-400 font-bold hover:underline"
-              >
-                Back to Visual Plant Details
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           
           {/* Plant Image & Gallery Thumbnails */}
           <div className="relative h-72 md:h-full min-h-[300px] bg-emerald-950/20 flex flex-col justify-between">
@@ -267,7 +200,6 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
 
           </div>
         </div>
-        )}
 
       </div>
     </div>
