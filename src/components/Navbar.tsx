@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, Phone, MessageSquare, ShoppingBag, Menu, X, MapPin, Instagram, PackageCheck } from 'lucide-react';
+import { Leaf, Phone, MessageSquare, ShoppingBag, Menu, X, MapPin, Instagram, PackageCheck, Code, BookOpen } from 'lucide-react';
 import { InquiryItem } from '../types';
 
 interface NavbarProps {
@@ -8,6 +8,8 @@ interface NavbarProps {
   onNavigateCategory: (catTitle: string) => void;
   onOpenOrderHistory?: () => void;
   orderCount?: number;
+  onOpenReadingMode?: () => void;
+  isReadingModeActive?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -16,6 +18,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateCategory,
   onOpenOrderHistory,
   orderCount = 0,
+  onOpenReadingMode,
+  isReadingModeActive = false,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -125,7 +129,23 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
+            {/* Reading Mode / Show Code Button */}
+            {onOpenReadingMode && (
+              <button
+                onClick={onOpenReadingMode}
+                className={`relative p-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 border ${
+                  isReadingModeActive
+                    ? 'bg-emerald-950 text-emerald-300 border-emerald-700 shadow-inner'
+                    : 'bg-slate-900 text-emerald-400 border-slate-800 hover:bg-slate-800'
+                }`}
+                title="Toggle Reading Mode / Show Source Code"
+              >
+                <Code className="w-4 h-4 text-emerald-400" />
+                <span className="hidden lg:inline">Reading Mode</span>
+              </button>
+            )}
+
             {/* Track Orders Button */}
             {onOpenOrderHistory && (
               <button
