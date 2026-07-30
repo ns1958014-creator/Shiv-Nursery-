@@ -41,7 +41,7 @@ export interface Category {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'nursery' | 'fruit' | 'flower' | 'decorative' | 'customers' | 'landscapes';
+  category: 'nursery' | 'fruit' | 'flower' | 'decorative' | 'indoor' | 'customers' | 'landscapes';
   categoryLabel: string;
   imageUrl: string;
   caption: string;
